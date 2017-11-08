@@ -121,7 +121,8 @@ __double underscores__
 테이블
 ------
 
--	example _ 1**Basic**
+-	example _ 1
+**Basic**
 
 ###### code
 
@@ -144,7 +145,8 @@ __double underscores__
 
 :- - - 으로 헤더부분과 테이블 부분을 나눈다. 공백은 무시 <br> 안에서도 볼드체 이탤릭체가 가능하며 || 를 적절히 나누면 여러개의 column을 합치는것이 가능하다.
 
--	example _ 2**Alignment**
+-	example _ 2
+**Alignment**
 
 ###### code
 
@@ -160,7 +162,8 @@ __double underscores__
 
 `:` 를 활용하여 text Alignment를 지정할 수 있다. 2번째 줄을 유심히 볼것
 
--	example _ 3**Column spanning**
+-	example _ 3
+**Column spanning**
 
 ###### code
 
@@ -180,3 +183,5 @@ Reference
 https://gist.github.com/ihoneymon/652be052a0727ad59601
 
 https://simhyejin.github.io/2016/06/30/Markdown-syntax/
+
+https://bywordapp.com/markdown/guide.html
