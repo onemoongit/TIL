@@ -3,8 +3,10 @@ MarkDown Guide
 
 ---
 
-# 제목 (Header)
----------------
+제목 (Header)
+=============
+
+---
 
 가장 많이 쓰는 서식중 하나 제목은 #으로 표현한다
 
@@ -106,7 +108,7 @@ __double underscores__
 ~~cancelline~~
 </pre>
 
-*single asterisks**single underscores***double asterisks****double underscores** ++underline++~~cancelline~~
+*single asterisks**single underscores***double asterisks\*\***double underscores** ++underline++~~cancelline~~
 
 이미지
 ------
@@ -131,7 +133,7 @@ __double underscores__
 | Item One       | Item Two       |
 ```
 
-:- - - 으로 헤더부분과 테이블 부분을 ㄱ
+:- - - 으로 헤더부분과 테이블 부분을 나눈다. 공백은 무시
 
 ---
 
