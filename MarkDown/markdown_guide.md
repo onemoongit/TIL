@@ -121,11 +121,11 @@ __double underscores__
 테이블
 ------
 
--	example _ 1
+-	example
 
 **Basic**
 
-###### code
+<!-- ###### code
 
 ```
 | First Header  | Second Header | Third Header         |
@@ -140,15 +140,16 @@ __double underscores__
 |:-------------|:----------------------------------:|---------------------:|
 | First row    |                Data                | Very long data entry |
 | Second row   |              **Cell**              |               *Cell* |
-| Third row    | Cell that spans across two columns                       ||
+| Third row    | Cell that spans across two columns ||
 
 [Table caption, works as a reference][section-mmd-tables-table1]
 
 :- - - 으로 헤더부분과 테이블 부분을 나눈다. 공백은 무시 <br> 안에서도 볼드체 이탤릭체가 가능하며 || 를 적절히 나누면 여러개의 column을 합치는것이 가능하다.
 
--	example _ 2
+-   example _ 2
 
 **Alignment**
+ -->
 
 ###### code
 
@@ -156,15 +157,17 @@ __double underscores__
 | Header One | Header Two | Header Three | Header Four |
 | ---------- | :--------- | :----------: | ----------: |
 | Default    | Left       | Center       | Right       |
+| Default    | Left       | Center       | Right       |
 ```
 
 | Header One | Header Two | Header Three | Header Four |
 |------------|:-----------|:------------:|------------:|
 | Default    | Left       |    Center    |       Right |
+| Default    | Left       |    Center    |       Right |
 
-`:` 를 활용하여 text Alignment를 지정할 수 있다. 2번째 줄을 유심히 볼것
+`:` 를 활용하여 text Alignment를 지정할 수 있다. 2번째 줄을 유심히 볼것 <br>:- - - 으로 헤더부분과 테이블 부분을 나눈다. 공백은 무시 <br> 안에서도 볼드체 이탤릭체가 가능하며 셀 병합등의 기능은 아직 사용할 수 없는듯 하다.
 
--	example _ 3
+<!-- -  example _ 3
 
 **Column spanning**
 
@@ -178,7 +181,7 @@ __double underscores__
 
 | Column 1 | Column 2                  | Column 3 | Column 4 |
 |----------|:-------------------------:|----------|----------|
-| No span  | Span across three columns                     |||
+| No span  | Span across three columns                     ||| -->
 
 Reference
 ---------
