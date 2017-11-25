@@ -58,5 +58,23 @@ middleware 도 나누어서 동일한 기능을 분산처리하도록 한다면 
 
 ### Load Balancer
 
+AWS에서 알아서 처리해주는 부하 분산 시스템
 
+loadbalancer protocol에 http와 https 를 추가하고 instance protocol은 http만 해줘도 무방하지만 https로 한다면 암호화나 복호화를 추가하기 때문에 더 많은 자원을 사용하게 된다. 
+
+Health Check 에서 ELB는 정기적으로 접속을 해서 해당 서버가 죽었는지 살았는지 체크를 한다. 설정한 파일을 다운로드 받는데 타임아웃이 되거나 서버가 다운되었다면 로드밸런서가 알아서 다른 서버로 분배해 줄것이다. 
+
+### ELB ( Load Balancer ) 주의사항
+
+데이터 베이스의 상관관계를 잘 알아야 한다. 만약 두개의 독립적인 데이터 베이스 인스턴스를 만들었다면 두개의 인스턴스를 만들어 Load Balancer를 구성했다고 생각했을때 다른 한쪽에서는 원하는 DB값을 가져올 수 없는 문제가 생기기 때문이다. 
+
+그렇기 때문에 데이터가 저장되는곳은 ( 동적이라면 ) 별도의 컴퓨터로 빼서 별도로 관리해야 한다.
+
+### Autoscaling 
+
+AWS 에 보면 launch configuration 과 auto scailing gruop을 잘 구분해야 한다. 
+
+Launch Configuration - 인스턴스를 생성하는것을 Launch Configuration 라고 한다 . 이미지를 인스턴스로 만드는 과정 !
+
+Auto Scaling Group - 이를 통해서 실제로 만들어주는 것이다. Launch Configuration이 먼저 생성되어야 한다.
 
