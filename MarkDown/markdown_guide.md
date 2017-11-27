@@ -94,7 +94,7 @@ let world = 1;
 
 -	참조 링크 ( url scheme이 있으면 기본링크 사용 ) https://google.com
 
--	인라인 링크<pre>[Go Google](https://google.com)</pre>[Go Google](https://google.com)
+-	인라인 링크<pre>\[Go Google]\(https://google.com)</pre>[Go Google](https://google.com)
 
 강조
 ----
