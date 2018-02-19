@@ -3,4 +3,4 @@
 # NPM
 
 ### 전역 설치 모듈 확인
-~~~ npm ls -g --depth=0 ~~~
+<code> npm ls -g --depth=0 </code>
