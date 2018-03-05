@@ -1,6 +1,4 @@
-# It's
-
-# Eclipse Shortcut for Mac
+# It's Eclipse Shortcut for Mac
 
 
 ## 코드 수정
