@@ -1,8 +1,6 @@
-# docker and java
+# Ubuntu and JAVA
 
-### 도커에 자바 설치하기
-
-
+### JAVA 8 기준
 
 
 ### 설치 후 설정
