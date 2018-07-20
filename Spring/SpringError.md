@@ -41,12 +41,35 @@ spring 에서 mysql 을 연결할 때 mysql-connector 라는 라이브러리를 
 
 ## JPA 한글처리 ( 인코딩 ) 문제 
 
-jpa상에서 db로 save쿼리를 날렸는데 한글이 저장이 안되는 문제가 발생
+구글링을 정말 많이했는데 , 사실상 문제는 다른곳에 있어서 정말 허무했습니다... 
 
-- mysql characterset 을 utf8_general_ci 로 설정
-- jpa 인코딩 설정 ! 
-    - spring.datasource.url=jdbc:mysql://localhost:3306/jpatest?useUnicode=true&characterEncoding=utf8
+체크하실 부분은 3가지 입니다.
+1. database 인코딩이 제대로 되어있는가?
+1. IDE 인코딩이 제대로 되어있는가?
+1. jpa 와 database 연결이 제대로 되어있는가?
 
-db상의 인코딩과 jpa상의 인코딩이 맞지 않아서 발생한 문제
 
-#### ! mysql 에서 status를 입력하면 인코딩등 설정을 확인할 수 있음
+### database 인코딩
+database 인코딩은 mysql 5.7+ 버전을 사용하신다면 기본적으로 utf8 으로 되어있는 것으로 알고 있습니다. 하지만 저는 5.6 버전을 사용하는데 기본 인코딩 ( characterset ) 이 latin1 으로 되어있어 처음에 한글이 들어가지 않았습니다.
+
+이를 해결하기 위해서 mysqlWorkbench 에서 테이블을 만들고 ( `create database testencoding;` )  chracter set을 따로 설정했습니다. 인코딩 설정 후 apply 버튼을 꼭 눌러주세요. 
+
+![workbench 인코딩설정](./imgs/sprerr_encoding_db1.png)
+
+그 후 사용하는 데이터베이스로 접속해 status 를 입력했을때 utf8 이 되어있다면 제대로 설정이 된것입니다. 
+
+![workbench 인코딩확인](./imgs/sprerr_encoding_db2.png)
+
+### IDE 인코딩
+
+database 문제가 아니라면 IDE에서 한글을 제대로 처리하지 않아서 그럴 수도 있습니다. 인코딩 설정을 꼭 확인해보세요 intellij 같은 경우는 커멘드+, 를 통해서 설정창을 불러온 뒤 encoding 을 검색하면 빠르게 찾을 수 있습니다.
+
+![intellij encoding](./imgs/sprerr_encoding_ide.png)
+
+### jpa database 연결 설정 
+
+저 같은 경우는 여기가 문제였습니다. jpa 상 인코딩 자체가 database의 인코딩과 맞지 않아서 한글이 제대로 들어가질 않았고 이를 간단하게 application.properties에서 해결했습니다.
+
+`spring.datasource.url=jdbc:mysql://localhost:3306/jpatest?useUnicode=true&characterEncoding=utf8`
+
+chracterEncoding=utf8 을 통해서 jpa와 database의 인코딩 설정을 동일하게 해주니 한글이 설정되었습니다! 
