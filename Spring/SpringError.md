@@ -38,3 +38,15 @@ spring 에서 mysql 을 연결할 때 mysql-connector 라는 라이브러리를 
 - 해결
     - connector 버전을 6.0.6 으로 낮추니 제대로 인식하게 되어 해결되었다.
     - mysql 은 5.6 v
+
+## JPA 한글처리 ( 인코딩 ) 문제 
+
+jpa상에서 db로 save쿼리를 날렸는데 한글이 저장이 안되는 문제가 발생
+
+- mysql characterset 을 utf8_general_ci 로 설정
+- jpa 인코딩 설정 ! 
+    - spring.datasource.url=jdbc:mysql://localhost:3306/jpatest?useUnicode=true&characterEncoding=utf8
+
+db상의 인코딩과 jpa상의 인코딩이 맞지 않아서 발생한 문제
+
+#### ! mysql 에서 status를 입력하면 인코딩등 설정을 확인할 수 있음
