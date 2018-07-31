@@ -4,7 +4,6 @@
 
 1. 쿼리 메소드
 1. @Query
-1. 페이징과 정렬
 1. Querydsl
 
 
@@ -239,6 +238,51 @@ public interface BoardRepository extends CrudRepository<Board,Long> {
 ```
 
 `BoardRepo.findByBnoGreaterThanOrderByDesc(10L)` 와 같은 형식이 될 것이고 , 역순으로 나타날 것입니다.
+
+
+### 페이징 처리와 정렬
+
+게시판을 만든다면 한 페이지에 모든 게시물이 보여지는 것이 아닌 한 페이지에 10개 정도의 게시물을 보여주고, 다음 페이지로 넘어가는 형식의 `페이징 처리`를 하고 싶을 것입니다. 이를 쿼리메소드에서 Pageable 인터페이스를 파라미터로 넘겨 구현할 수 있습니다.
+
+아래의 예제를 보면서 다시 얘기해보겠습니다.
+
+```java
+    // BoardRepository.java
+    import org.springframework.data.domain.Pageable;
+
+    public List<Board> findByBnoGreaterThan(Long bno,Pageable paging);
+
+    // BoardTest.java
+    @Test
+    public void testQueryPaging(){
+        Pageable paging = new PageRequest(0,10);
+
+        BoardRepo.findByBnoGreaterThan(1l,paging)
+        .forEach(board -> {
+            System.out.println(board);
+        });
+    }
+```
+
+repository에 Bno라는 칼럼을 기준으로 더 높은 수의 게시물을 찾는 쿼리 메소드를 만들어 놓았습니다. 여기서 페이징 처리를 하고 싶다면 `Pageable paging` 파라미터를 일단 추가해줍니다.
+
+그 후 Pageable interface 를 구현한 PageRequest 클래스의 인스턴스를 만들어 줘야 합니다.
+
+Pageable 인터페이스에는 여러 메소드가 존재하고 이를 구현한 클래스 또한 여러개 존재합니다. 대표적인 PageRequest 클래스의 메소드들을 적어놓겠습니다.
+
+|생성자|설명|
+|---|---|
+|PageRequest(int page, int size )|페이지 번호(0부터 시작)와 각 페이지에 데이터 수를 정합니다.|
+|PageRequest(int page, int size , Sort sort)|위의 메소드에서 정렬 방향 설정이 추가된 메소드입니다.|
+|PageRequest(int page, int size , Sort.Direction direction , String ... props)| 위의 메소드에서 정렬방향과 설정할 속성들을 설정할 수 있는 기능이 추가되었습니다.|
+
+이러한 Pageable 인터페이스를 구현한 인스턴스를 쿼리메소드에 넣어준다면 원하는 페이징 처리를 쉽게 할 수 있습니다. 저는 bno(PK)가 1보다 큰 데이터를 10개 가져오는 0번째 페이지를 출력해보았습니다.
+
+![jpa_qm_paging_1](./imgs/jpa_qm_paging_1.png)
+
+또한 List<Board> 가 아닌 Page<Board> 를 사용할 수도 있습니다. Page를 사용하면 다양한 기능들을 덤으로 제공해주니 List 보다는 Page로 사용하는 것을 추천드립니다.
+
+![jpa_qm_paging_2](./imgs/jpa_qm_paging_2.png)
 
 
 ## 마무리
