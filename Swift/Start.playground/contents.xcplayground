@@ -4,6 +4,6 @@
         <page name='01_start'/>
         <page name='02_array'/>
         <page name='03_function'/>
-        <page name='04'/>
+        <page name='04_if_for_optional'/>
     </pages>
 </playground>
