@@ -5,5 +5,9 @@
         <page name='02_array'/>
         <page name='03_function'/>
         <page name='04_if_for_optional'/>
+        <page name='05_Stru_clas_enu'/>
+        <page name='06_closure'/>
+        <page name='07_property'/>
+        <page name='08_inheritance_instance'/>
     </pages>
 </playground>

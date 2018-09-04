@@ -77,7 +77,3 @@ do while 은 swift에 오류 처리에서 사용하기 때문에 사용되지 �
         - !를 뒤에 붙여서 사용한다.
 
 forceunwrapping 은 혹시나 nil 값이 들어가는 경우 에러의 소지가 있기 때문에 optional binding 을 사용하여 안전하게 값을 가져온다.  
-
-
-
-태웅이한테 말하기
