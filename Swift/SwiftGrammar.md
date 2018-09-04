@@ -24,3 +24,22 @@
 ## Omitting Argument Labels
 
 func 를 보다 보면 네이밍 앞에 _ ( underbar ) 가 있는 함수들이 있다. 이를 사용하면 Argument Label 을 사용하지 않아도 func를 사용할 수 있다.
+
+## To Use Reserved Word (naming escape)
+
+양쪽을 `backtick`으로 묶어주면 이스케이핑이 가능하다. 예를들어 class 라는 변수를 사용할 때 이미 swift 에 존재하는 예약어 이기 때문에 그대로는 사용할 수 없다.
+
+이때 사용하는 것이 강세표 ``이다 이를 네이밍 양쪽에 위치 시키면 class 라는 이름을 그대로 사용할 수 있다.
+
+```
+struct Test{
+    static var `class`: Int = 100
+    // static var class: Int = 100  
+    
+}
+print(Test.class)
+print(Test.`class`)
+
+```
+
+위의 예제 코드를 보면 프로퍼티에 접근하는 것은 이스케이핑을 해도 안해도 상관없지만 선언을 할 때에는 무조건 backtick으로 escaping 을 시켜야 한다는 것을 알 수 있다.
