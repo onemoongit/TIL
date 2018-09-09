@@ -22,12 +22,12 @@ variable = "이것은 변경이 가능합니다"
 let immuTimer: Int
 
 // 상수의 정의
-immuTimer = 10
+//immuTimer = 10
 
 // Error
 //immuTimer = 29
 
-print(immuTimer)
+//print(immuTimer)
 
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
