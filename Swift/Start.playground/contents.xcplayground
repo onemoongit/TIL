@@ -10,5 +10,8 @@
         <page name='07_property'/>
         <page name='08_inheritance_instance'/>
         <page name='09_instance_life_cycle'/>
+        <page name='10_assert_guard'/>
+        <page name='11_protocol_extension'/>
+        <page name='12_Error_highFunc'/>
     </pages>
 </playground>
