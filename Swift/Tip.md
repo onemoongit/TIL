@@ -1,6 +1,10 @@
 # Tip for Swift or Xcode
 
-## MARK
+## Interface builder
+
+인터페이스 빌더에서 cntl+드래그를 통해서 함수를 코드상으로 간단하게 만들 수 있다.
+
+## MARK 
 
 Swift의 문법중 사용자의 편의성을 위해 나온 문법이 MARK 이다. 이는 사용자가 보기 편하게끔 헤드라인을 잡아주는 역할을 한다.
 
