@@ -35,6 +35,17 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
+    
+    
     // MARK:- Actions
     @IBAction func getLocation() {
         
@@ -72,6 +83,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             locationManager.startUpdatingLocation()
             updatingLocation = true
             
+            // 60초 동안 반응이 없으면 중지 시켜야 한다.
             timer = Timer.scheduledTimer(
                 timeInterval: 60, target: self,
                 selector: #selector(didTimeOut),
@@ -245,6 +257,15 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             messageLabel.text = statusMessage
         }
         configureGetButton()
+    }
+    
+    // MARK:- Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "TagLocation" {
+            let controller = segue.destination as! LocationDetailViewController
+            controller.coordinate = location!.coordinate
+            controller.placemark = placemark
+        }
     }
     
     
