@@ -13,13 +13,14 @@
 		D981DEF621CDD45E004DBEB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D981DEF521CDD45E004DBEB1 /* AppDelegate.swift */; };
 		D981DEF821CDD45E004DBEB1 /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D981DEF721CDD45E004DBEB1 /* CurrentLocationViewController.swift */; };
 		D981DEFA21CDD45E004DBEB1 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D981DEF921CDD45E004DBEB1 /* SecondViewController.swift */; };
-		D981DEFD21CDD45E004DBEB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D981DEFB21CDD45E004DBEB1 /* Main.storyboard */; };
+		D981DEFD21CDD45E004DBEB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D981DEFB21CDD45E004DBEB1 /* Main.storyboard */; settings = {ASSET_TAGS = (101, ); }; };
 		D981DEFF21CDD45F004DBEB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D981DEFE21CDD45F004DBEB1 /* Assets.xcassets */; };
 		D981DF0221CDD45F004DBEB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D981DF0021CDD45F004DBEB1 /* LaunchScreen.storyboard */; };
 		D9D51AA621D8A00900597942 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D51AA521D8A00900597942 /* Functions.swift */; };
 		D9D51AA921D8A79300597942 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D9D51AA721D8A79300597942 /* DataModel.xcdatamodeld */; };
 		D9D51AAC21D8C2EE00597942 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D51AAA21D8C2EE00597942 /* Location+CoreDataClass.swift */; };
 		D9D51AAD21D8C2EE00597942 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D51AAB21D8C2EE00597942 /* Location+CoreDataProperties.swift */; };
+		D9D51AB121DA04F100597942 /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D51AB021DA04F100597942 /* LocationsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		D9D51AA821D8A79300597942 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		D9D51AAA21D8C2EE00597942 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D9D51AAB21D8C2EE00597942 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D9D51AB021DA04F100597942 /* LocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,12 +74,11 @@
 		D981DEF421CDD45E004DBEB1 /* Sec3_MyLocations */ = {
 			isa = PBXGroup;
 			children = (
+				D9D51AAE21DA025A00597942 /* Tab1 */,
+				D9D51AAF21DA028300597942 /* Tab2 */,
 				D981DEF521CDD45E004DBEB1 /* AppDelegate.swift */,
-				D981DEF721CDD45E004DBEB1 /* CurrentLocationViewController.swift */,
 				D968577521D3A55900395E80 /* HudView.swift */,
-				D905548621D0B6E3008C7AF4 /* LocationDetailViewController.swift */,
 				D9D51AA521D8A00900597942 /* Functions.swift */,
-				D905548821D395D9008C7AF4 /* CategoryPickerViewController.swift */,
 				D981DEF921CDD45E004DBEB1 /* SecondViewController.swift */,
 				D981DEFB21CDD45E004DBEB1 /* Main.storyboard */,
 				D981DEFE21CDD45F004DBEB1 /* Assets.xcassets */,
@@ -86,6 +87,24 @@
 				D9D51AA721D8A79300597942 /* DataModel.xcdatamodeld */,
 			);
 			path = Sec3_MyLocations;
+			sourceTree = "<group>";
+		};
+		D9D51AAE21DA025A00597942 /* Tab1 */ = {
+			isa = PBXGroup;
+			children = (
+				D981DEF721CDD45E004DBEB1 /* CurrentLocationViewController.swift */,
+				D905548621D0B6E3008C7AF4 /* LocationDetailViewController.swift */,
+				D905548821D395D9008C7AF4 /* CategoryPickerViewController.swift */,
+			);
+			path = Tab1;
+			sourceTree = "<group>";
+		};
+		D9D51AAF21DA028300597942 /* Tab2 */ = {
+			isa = PBXGroup;
+			children = (
+				D9D51AB021DA04F100597942 /* LocationsViewController.swift */,
+			);
+			path = Tab2;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -114,6 +133,10 @@
 		D981DEEA21CDD45E004DBEB1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					100,
+					101,
+				);
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = onemoon;
@@ -163,6 +186,7 @@
 				D9D51AA921D8A79300597942 /* DataModel.xcdatamodeld in Sources */,
 				D981DEFA21CDD45E004DBEB1 /* SecondViewController.swift in Sources */,
 				D968577621D3A55900395E80 /* HudView.swift in Sources */,
+				D9D51AB121DA04F100597942 /* LocationsViewController.swift in Sources */,
 				D9D51AAD21D8C2EE00597942 /* Location+CoreDataProperties.swift in Sources */,
 				D9D51AA621D8A00900597942 /* Functions.swift in Sources */,
 				D981DEF621CDD45E004DBEB1 /* AppDelegate.swift in Sources */,
