@@ -35,16 +35,33 @@ class LocationDetailViewController: UITableViewController {
     var categoryName = "No Category"
     var date = Date()
     
+    var descriptionText = ""
+    var locationToEdit: Location? {
+        
+        didSet { // property observer
+            if let location = locationToEdit {
+                descriptionText = location.locationDescription
+                categoryName = location.category
+                date = location.date
+                coordinate = CLLocationCoordinate2DMake(location.latitude, location.longitude)
+                placemark = location.placemark
+            }
+        }
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let location = locationToEdit {
+            title = "Edit Location"
+        }
         
-        descriptionTextView.text = ""
+        descriptionTextView.text = descriptionText
         categoryLabel.text = categoryName
         
-        latitudeLabel.text = String(format: "%.8f",
-                                    coordinate.latitude)
-        longitudeLabel.text = String(format: "%.8f",
-                                     coordinate.longitude)
+        latitudeLabel.text = String(format: "%.8f", coordinate.latitude)
+        longitudeLabel.text = String(format: "%.8f", coordinate.longitude)
         
         if let placemark = placemark {
             addressLabel.text = string(from: placemark)
@@ -57,7 +74,7 @@ class LocationDetailViewController: UITableViewController {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         gestureRecognizer.cancelsTouchesInView = false
         tableView.addGestureRecognizer(gestureRecognizer)
-        
+
     }
     
     // MARK:- Actions
@@ -69,8 +86,18 @@ class LocationDetailViewController: UITableViewController {
         let hudView = HudView.hud(inView: navigationController!.view, animated: true)
 //        let hudView = HudView.hud(inView: view, animated: true)
         // 주석친 코드는 전체 view에 대해서 계산을 하기 때문에 체크모양이 잘 안맞음
-        hudView.text = "Tagged"
+        let location: Location
+        if let temp = locationToEdit {
+            hudView.text = "Updated"
+            location = temp
+        } else {
+            hudView.text = "Tagged"
+            location = Location(context: managedObjectContext)
+        }
         
+        location.locationDescription = descriptionTextView.text
+        
+        // hudview
         let delayInSeconds = 0.6
         afterDelay(delayInSeconds, run: {
             hudView.hide()
@@ -82,9 +109,8 @@ class LocationDetailViewController: UITableViewController {
 //                                        self.navigationController?.popViewController(animated: true)
 //        })
         
-        let location = Location(context: managedObjectContext)
-        
-        location.locationDescription = descriptionTextView.text
+//        let location = Location(context: managedObjectContext)
+//        location.locationDescription = descriptionTextView.text
         location.category = categoryName
         location.latitude = coordinate.latitude
         location.longitude = coordinate.longitude
@@ -95,8 +121,7 @@ class LocationDetailViewController: UITableViewController {
             try managedObjectContext.save()
             afterDelay(0.6) {
                 hudView.hide()
-                self.navigationController?.popViewController(
-                    animated: true)
+                self.navigationController?.popViewController(animated: true)
             }
         } catch {
             // 4
