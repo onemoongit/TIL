@@ -13,7 +13,19 @@ import CoreData
 class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
-    var managedObjectContext: NSManagedObjectContext!
+    var managedObjectContext: NSManagedObjectContext! {
+        didSet {
+            NotificationCenter.default.addObserver(forName:
+                Notification.Name.NSManagedObjectContextObjectsDidChange,
+                                                   object: managedObjectContext,
+                                                   queue: OperationQueue.main) { notification in
+                                                    if self.isViewLoaded {
+                                                        self.updateLocations()
+                                                    }
+            }
+        }
+    }
+    
     var locations = [Location]()
     
     override func viewDidLoad() {
@@ -103,12 +115,11 @@ class MapViewController: UIViewController {
     
     
     @objc func showLocationDetails(_ sender: UIButton) {
-        
+        performSegue(withIdentifier: "EditLocation", sender: sender)
     }
     
     
-    func mapView(_ mapView: MKMapView,
-                    viewFor annotation: MKAnnotation) ->
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) ->
         MKAnnotationView? {
             // 1
             guard annotation is Location else {
@@ -141,10 +152,8 @@ class MapViewController: UIViewController {
             if let annotationView = annotationView {
                 annotationView.annotation = annotation
                 // 5
-                let button = annotationView.rightCalloutAccessoryView
-                    as! UIButton
-                if let index = locations.index(of: annotation
-                    as! Location) {
+                let button = annotationView.rightCalloutAccessoryView as! UIButton
+                if let index = locations.index(of: annotation as! Location) {
                     button.tag = index
                 }
             }
@@ -152,7 +161,22 @@ class MapViewController: UIViewController {
             return annotationView
     }
     
+    // MARK:- Navigation
+    override func prepare(for segue: UIStoryboardSegue,
+                          sender: Any?) {
+        if segue.identifier == "EditLocation" {
+            let controller = segue.destination as! LocationDetailViewController
+            controller.managedObjectContext = managedObjectContext
+            
+            let button = sender as! UIButton
+            let location = locations[button.tag]
+            controller.locationToEdit = location
+        }
+    }
+    
+    
 }
 
 extension MapViewController: MKMapViewDelegate {
+    
 }

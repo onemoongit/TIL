@@ -23,6 +23,7 @@
 		D9D51AB321DC9A0C00597942 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D51AB221DC9A0C00597942 /* LocationCell.swift */; };
 		D9D51AB621DDE09A00597942 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D51AB521DDE09A00597942 /* MapKit.framework */; };
 		D9D51AB921DDE45A00597942 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D51AB821DDE45A00597942 /* MapViewController.swift */; };
+		D9D51ABB21DF3EC600597942 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D51ABA21DF3EC600597942 /* UIImage+Resize.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		D9D51AB221DC9A0C00597942 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		D9D51AB521DDE09A00597942 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D9D51AB821DDE45A00597942 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		D9D51ABA21DF3EC600597942 /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				D9D51AAA21D8C2EE00597942 /* Location+CoreDataClass.swift */,
+				D9D51ABA21DF3EC600597942 /* UIImage+Resize.swift */,
 				D9D51AAB21D8C2EE00597942 /* Location+CoreDataProperties.swift */,
 				D981DEF421CDD45E004DBEB1 /* Sec3_MyLocations */,
 				D981DEF321CDD45E004DBEB1 /* Products */,
@@ -215,6 +218,7 @@
 				D968577621D3A55900395E80 /* HudView.swift in Sources */,
 				D9D51AB121DA04F100597942 /* LocationsViewController.swift in Sources */,
 				D9D51AAD21D8C2EE00597942 /* Location+CoreDataProperties.swift in Sources */,
+				D9D51ABB21DF3EC600597942 /* UIImage+Resize.swift in Sources */,
 				D9D51AB321DC9A0C00597942 /* LocationCell.swift in Sources */,
 				D9D51AA621D8A00900597942 /* Functions.swift in Sources */,
 				D9D51AB921DDE45A00597942 /* MapViewController.swift in Sources */,
@@ -368,6 +372,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 74HR8KDU73;
 				INFOPLIST_FILE = Sec3_MyLocations/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -385,6 +390,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 74HR8KDU73;
 				INFOPLIST_FILE = Sec3_MyLocations/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
