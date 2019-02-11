@@ -34,8 +34,7 @@ class ViewController: UIViewController {
   // MARK: - Properties
   fileprivate let teamCellIdentifier = "teamCellReuseIdentifier"
   var coreDataStack: CoreDataStack!
-  lazy var fetchedResultsController:
-    NSFetchedResultsController<Team> = {
+  lazy var fetchedResultsController: NSFetchedResultsController<Team> = {
       // 1
       let fetchRequest: NSFetchRequest<Team> = Team.fetchRequest()
       
@@ -54,7 +53,9 @@ class ViewController: UIViewController {
         managedObjectContext: coreDataStack.managedContext,
         sectionNameKeyPath: #keyPath(Team.qualifyingZone),
         cacheName: "worldCup")
-      
+    
+    fetchedResultsController.delegate = self
+    
       return fetchedResultsController
   }()
 
@@ -137,7 +138,56 @@ extension ViewController: UITableViewDelegate {
     let team = fetchedResultsController.object(at: indexPath)
     team.wins = team.wins + 1
     coreDataStack.saveContext()
-    tableView.reloadData()
   }
   
+}
+
+extension ViewController: NSFetchedResultsControllerDelegate {
+  func controllerWillChangeContent(_ controller:
+    NSFetchedResultsController<NSFetchRequestResult>) {
+    tableView.beginUpdates()
+  }
+  
+  func controller(_ controller:
+    NSFetchedResultsController<NSFetchRequestResult>,
+                  didChange anObject: Any,
+                  at indexPath: IndexPath?,
+                  for type: NSFetchedResultsChangeType,
+                  newIndexPath: IndexPath?) {
+    
+    switch type {
+    case .insert:
+      tableView.insertRows(at: [newIndexPath!], with: .automatic)
+    case .delete:
+      tableView.deleteRows(at: [indexPath!], with: .automatic)
+    case .update:
+      let cell = tableView.cellForRow(at: indexPath!) as! TeamCell
+      configure(cell: cell, for: indexPath!)
+    case .move:
+      tableView.deleteRows(at: [indexPath!], with: .automatic)
+      tableView.insertRows(at: [newIndexPath!], with: .automatic)
+    }
+  }
+  
+  func controllerDidChangeContent(_ controller:
+    NSFetchedResultsController<NSFetchRequestResult>) {
+    tableView.endUpdates()
+  }
+  
+  func controller(_ controller:
+    NSFetchedResultsController<NSFetchRequestResult>,
+                     didChange sectionInfo: NSFetchedResultsSectionInfo,
+                     atSectionIndex sectionIndex: Int,
+                     for type: NSFetchedResultsChangeType) {
+    
+    let indexSet = IndexSet(integer: sectionIndex)
+    
+    switch type {
+    case .insert:
+      tableView.insertSections(indexSet, with: .automatic)
+    case .delete:
+      tableView.deleteSections(indexSet, with: .automatic)
+    default: break
+    }
+  }
 }
