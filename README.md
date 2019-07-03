@@ -8,8 +8,6 @@
 
 - root 폴더는 언어나 사용 기술명으로 한다.
 
-- 파일명은 영어로 기재한다.
-
-- 책과 세미나 관련 내용은 [review](https://github.com/onemoongit/Review) 폴더에!
+- 파일명은 영어로 기재한다.s
 
 <hr>
