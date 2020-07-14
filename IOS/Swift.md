@@ -1,3 +1,0 @@
-# Swift
-
-## issue check
